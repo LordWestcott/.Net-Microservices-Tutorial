@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "PlatformService"; // Top level namespace of this project
+
+service GrpcPlatform { // Service name
+    rpc GetAllPlatforms (GetAllRequest) returns (PlatformResponse); // Method name and return type
+}
+
+message GetAllRequest {}
+
+message GrpcPlatformModel {
+    int32 platformId = 1; // 1 is the position of the field
+    string name = 2;
+    string publisher = 3;
+}
+
+message PlatformResponse {
+    repeated GrpcPlatformModel platforms = 1; //repeated means it is a list of these types
+}
